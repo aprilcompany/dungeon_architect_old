@@ -42,16 +42,20 @@
 	if( (self=[super init]) ) {
 		
 		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
+		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Dungeon Architect" fontName:@"Marker Felt" fontSize:64];
+        
+		CCLabelTTF *vlabel = [CCLabelTTF labelWithString:@"a Andy and Chris Production" fontName:@"Marker Felt" fontSize:32];
+        
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
 	
 		// position the label on the center of the screen
 		label.position =  ccp( size.width /2 , size.height/2 );
-		
+		vlabel.position =  ccp( size.width /2 , size.height/3 );
+        
 		// add the label as a child to this Layer
 		[self addChild: label];
+        [self addChild: vlabel];
 		
 		
 		
