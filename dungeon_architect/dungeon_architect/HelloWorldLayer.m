@@ -42,7 +42,7 @@
 	if( (self=[super init]) ) {
 		
 		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Dungeon Architect" fontName:@"Marker Felt" fontSize:64];
+		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Dungeon Architect Alpha" fontName:@"Marker Felt" fontSize:64];
         
 		CCLabelTTF *vlabel = [CCLabelTTF labelWithString:@"a Andi and Chris Production" fontName:@"Marker Felt" fontSize:32];
         
