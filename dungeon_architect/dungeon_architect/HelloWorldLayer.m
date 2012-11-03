@@ -48,10 +48,15 @@
         
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-	
+        CCSprite *player = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
+        
 		// position the label on the center of the screen
 		label.position =  ccp( size.width /2 , size.height/2 );
 		vlabel.position =  ccp( size.width /2 , size.height/3 );
+        
+        // position player on the screen
+        player.position = ccp(size.width/2, size.height/2+50);
+        [self addChild: player];
         
 		// add the label as a child to this Layer
 		[self addChild: label];

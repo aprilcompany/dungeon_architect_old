@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D87C68016457F72001E6A23 /* barbarian.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D87C67F16457F72001E6A23 /* barbarian.png */; };
 		8DAF391C1645687200D87E6C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DAF391B1645687200D87E6C /* Default-568h@2x.png */; };
 		A154DA601645660D007FC8D4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA5F1645660D007FC8D4 /* QuartzCore.framework */; };
 		A154DA621645660D007FC8D4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA611645660D007FC8D4 /* OpenGLES.framework */; };
@@ -137,6 +138,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D87C67F16457F72001E6A23 /* barbarian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barbarian.png; sourceTree = "<group>"; };
 		8DAF391B1645687200D87E6C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A154DA5B1645660D007FC8D4 /* dungeon_architect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dungeon_architect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A154DA5F1645660D007FC8D4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -475,6 +477,7 @@
 		A154DA721645660D007FC8D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D87C67F16457F72001E6A23 /* barbarian.png */,
 				A154DA731645660D007FC8D4 /* Default.png */,
 				A154DA751645660D007FC8D4 /* Default-Landscape~ipad.png */,
 				A154DA771645660D007FC8D4 /* fps_images.png */,
@@ -899,6 +902,7 @@
 				A154DA8B1645660D007FC8D4 /* iTunesArtwork in Resources */,
 				A154DBC91645660F007FC8D4 /* ChangeLog in Resources */,
 				8DAF391C1645687200D87E6C /* Default-568h@2x.png in Resources */,
+				8D87C68016457F72001E6A23 /* barbarian.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
