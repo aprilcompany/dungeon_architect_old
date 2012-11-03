@@ -44,7 +44,7 @@
 		// create and initialize a Label
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Dungeon Architect" fontName:@"Marker Felt" fontSize:64];
         
-		CCLabelTTF *vlabel = [CCLabelTTF labelWithString:@"a Andy and Chris Production" fontName:@"Marker Felt" fontSize:32];
+		CCLabelTTF *vlabel = [CCLabelTTF labelWithString:@"a Andi and Chris Production" fontName:@"Marker Felt" fontSize:32];
         
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
