@@ -64,9 +64,33 @@
     int rangeY = maxY - minY;
     int actualY = (arc4random() % rangeY) + minY;
     
+    float x = arc4random() % 480;
+    float y = arc4random() % 320;
+    
+    int directionX = arc4random() % 2;
+    switch (directionX) {
+        case 1:
+            x = -x;
+            break;
+        default:
+            x = -x;
+            break;
+    }
+    
+    int directionY = arc4random() % 2;
+    switch (directionY) {
+        case 1:
+            y = -y;
+            break;
+        default:
+            y = y;
+            break;
+    }
+    
     // Create the target slightly off-screen along the right edge,
+    // size.width/2, size.height/2+50
     // and along a random position along the Y axis as calculated above
-    target.position = ccp(winSize.width + (target.contentSize.width/2), actualY);
+    target.position = ccp(winSize.width/2, winSize.height/2+50);
     [self addChild:target];
     
     // Determine speed of the target
@@ -77,7 +101,7 @@
     
     // Create the actions
     id actionMove = [CCMoveTo actionWithDuration:actualDuration
-                                        position:ccp(-target.contentSize.width/2, actualY)];
+                                        position:ccp(x, y)];
     id actionMoveDone = [CCCallFuncN actionWithTarget:self
                                              selector:@selector(spriteMoveFinished:)];
     [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
@@ -98,7 +122,7 @@
         
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-        CCSprite *player = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
+        CCSprite *player = [CCSprite spriteWithFile:@"openDoor0.gif" rect:CGRectMake(0, 0, 35, 35)];
         
 		// position the label on the center of the screen
 		label.position =  ccp( size.width /2 , size.height/2 );
