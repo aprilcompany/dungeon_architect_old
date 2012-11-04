@@ -13,6 +13,9 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
+//http://www.reigndesign.com/blog/creating-a-simple-menu-with-scene-transition-in-cocos2d/
+#import "GameScene.h"
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -187,48 +190,65 @@
 		[CCMenuItemFont setFontSize:28];
 		
 		// Achievement Menu Item using blocks
-		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-			
-			
-			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-			achivementViewController.achievementDelegate = self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:achivementViewController animated:YES];
-			
-			[achivementViewController release];
-		}
-									   ];
-
-		// Leaderboard Menu Item using blocks
-		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
-			
-			
-			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-			leaderboardViewController.leaderboardDelegate = self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-			
-			[leaderboardViewController release];
-		}
-									   ];
+        //		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
+        //
+        //
+        //			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
+        //			achivementViewController.achievementDelegate = self;
+        //
+        //			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+        //
+        //			[[app navController] presentModalViewController:achivementViewController animated:YES];
+        //
+        //			[achivementViewController release];
+        //		}
+        //									   ];
+        //
+        //		// Leaderboard Menu Item using blocks
+        //		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
+        //
+        //
+        //			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
+        //			leaderboardViewController.leaderboardDelegate = self;
+        //
+        //			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+        //
+        //			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
+        //
+        //			[leaderboardViewController release];
+        //		}
+        //									   ];
+        //CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
 		
-		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
-		
-		[menu alignItemsHorizontallyWithPadding:20];
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
-		
-		// Add the menu to the layer
-		[self addChild:menu];
+        
+        //http://www.reigndesign.com/blog/creating-a-simple-menu-with-scene-transition-in-cocos2d/
+        CCMenuItem *startGame = [CCMenuItemFont itemWithString:@"START"
+                                                        target:self
+                                                      selector:@selector(startGame:)
+                                 ];        
+        CCMenu *menu = [CCMenu menuWithItems:startGame, nil];
+        
+        
+        
+        [menu alignItemsHorizontallyWithPadding:20];
+        [menu setPosition:ccp( size.width/2, size.height/2 - 50)];
+        
+        // Add the menu to the layer
+        [self addChild:menu];
         
         // Add Schedule to move babarian
         [self schedule:@selector(gameLogic:) interval:3.0];
+        
+    }
+    return self;
+}
 
-	}
-	return self;
+
+//http://www.reigndesign.com/blog/creating-a-simple-menu-with-scene-transition-in-cocos2d/
+- (void) startGame: (id) sender
+{
+    CCLOG(@"startGame");
+    [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
 }
 
 -(void)gameLogic:(ccTime)dt {
@@ -238,25 +258,25 @@
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
-	[super dealloc];
+    // in case you have something to dealloc, do it in this method
+    // in this particular example nothing needs to be released.
+    // cocos2d will automatically release all the children (Label)
+    
+    // don't forget to call "super dealloc"
+    [super dealloc];
 }
 
 #pragma mark GameKit delegate
 
 -(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
 {
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+    [[app navController] dismissModalViewControllerAnimated:YES];
 }
 
 -(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+    [[app navController] dismissModalViewControllerAnimated:YES];
 }
 @end
