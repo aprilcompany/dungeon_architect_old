@@ -92,6 +92,7 @@ NSString *const TILEMAP = @"background_tilemap.tmx";
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    CCLOG(@"ccTouchBegan");
 	return YES;
 }
 
@@ -101,6 +102,8 @@ NSString *const TILEMAP = @"background_tilemap.tmx";
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    
+    CCLOG(@"ccTouchEnded");
     
     CGPoint touchLocation = [touch locationInView: [touch view]];
     touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
