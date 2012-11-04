@@ -138,8 +138,11 @@
 		A1A2042B1646698A007C5EE8 /* openDoor0.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1A204191646698A007C5EE8 /* openDoor0.gif */; };
 		A1A2042C1646698A007C5EE8 /* priest.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A2041A1646698A007C5EE8 /* priest.png */; };
 		A1A2043C164669A4007C5EE8 /* sage.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1A2043B164669A4007C5EE8 /* sage.gif */; };
-		A1A2045B1646A437007C5EE8 /* background_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = A1A2045A1646A437007C5EE8 /* background_tilemap.tmx */; };
 		A1A204641646AA8D007C5EE8 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A204631646AA8D007C5EE8 /* GameScene.m */; };
+		A1A2046616470496007C5EE8 /* glove3_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A2046516470496007C5EE8 /* glove3_0.png */; };
+		A1A2046A16470DE5007C5EE8 /* unbenannt.tmx in Resources */ = {isa = PBXBuildFile; fileRef = A1A2046916470DE5007C5EE8 /* unbenannt.tmx */; };
+		A1A2046D16470EC8007C5EE8 /* tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = A1A2046B16470EC8007C5EE8 /* tilemap.tmx */; };
+		A1A2046E16470EC8007C5EE8 /* tmw_desert_spacing.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A2046C16470EC8007C5EE8 /* tmw_desert_spacing.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -410,9 +413,12 @@
 		A1A204191646698A007C5EE8 /* openDoor0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = openDoor0.gif; sourceTree = "<group>"; };
 		A1A2041A1646698A007C5EE8 /* priest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = priest.png; sourceTree = "<group>"; };
 		A1A2043B164669A4007C5EE8 /* sage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sage.gif; sourceTree = "<group>"; };
-		A1A2045A1646A437007C5EE8 /* background_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = background_tilemap.tmx; path = Resources/background_tilemap.tmx; sourceTree = "<group>"; };
 		A1A204621646AA8D007C5EE8 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		A1A204631646AA8D007C5EE8 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		A1A2046516470496007C5EE8 /* glove3_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glove3_0.png; sourceTree = "<group>"; };
+		A1A2046916470DE5007C5EE8 /* unbenannt.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = unbenannt.tmx; path = Resources/unbenannt.tmx; sourceTree = "<group>"; };
+		A1A2046B16470EC8007C5EE8 /* tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tilemap.tmx; path = Resources/tilemap.tmx; sourceTree = "<group>"; };
+		A1A2046C16470EC8007C5EE8 /* tmw_desert_spacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmw_desert_spacing.png; path = Resources/tmw_desert_spacing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,7 +495,10 @@
 		A154DA721645660D007FC8D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A1A2045A1646A437007C5EE8 /* background_tilemap.tmx */,
+				A1A2046B16470EC8007C5EE8 /* tilemap.tmx */,
+				A1A2046C16470EC8007C5EE8 /* tmw_desert_spacing.png */,
+				A1A2046916470DE5007C5EE8 /* unbenannt.tmx */,
+				A1A2046516470496007C5EE8 /* glove3_0.png */,
 				A1A2043B164669A4007C5EE8 /* sage.gif */,
 				A1A204171646698A007C5EE8 /* barbarian.gif */,
 				A1A204181646698A007C5EE8 /* barbarian.png */,
@@ -923,7 +932,10 @@
 				A1A2042B1646698A007C5EE8 /* openDoor0.gif in Resources */,
 				A1A2042C1646698A007C5EE8 /* priest.png in Resources */,
 				A1A2043C164669A4007C5EE8 /* sage.gif in Resources */,
-				A1A2045B1646A437007C5EE8 /* background_tilemap.tmx in Resources */,
+				A1A2046616470496007C5EE8 /* glove3_0.png in Resources */,
+				A1A2046A16470DE5007C5EE8 /* unbenannt.tmx in Resources */,
+				A1A2046D16470EC8007C5EE8 /* tilemap.tmx in Resources */,
+				A1A2046E16470EC8007C5EE8 /* tmw_desert_spacing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

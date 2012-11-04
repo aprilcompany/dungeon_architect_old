@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="56" height="56" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="background" width="56" height="56">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKACAMBMG8JAT//0hb0dLCCFNMv8dlRCQAAAAAAAAAAABwrRo04Cf4RTVo4DQWr1vss283AUkfb7o=
+  </data>
+ </layer>
+ <layer name="Kachelebene 2" width="56" height="56">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAC+DTEAAAE=
+  </data>
+ </layer>
+</map>
