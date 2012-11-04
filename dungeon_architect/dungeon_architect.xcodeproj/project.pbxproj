@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8DAF391C1645687200D87E6C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DAF391B1645687200D87E6C /* Default-568h@2x.png */; };
 		A154DA601645660D007FC8D4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA5F1645660D007FC8D4 /* QuartzCore.framework */; };
 		A154DA621645660D007FC8D4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA611645660D007FC8D4 /* OpenGLES.framework */; };
 		A154DA641645660D007FC8D4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA631645660D007FC8D4 /* OpenAL.framework */; };
@@ -137,7 +136,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8DAF391B1645687200D87E6C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A154DA5B1645660D007FC8D4 /* dungeon_architect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dungeon_architect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A154DA5F1645660D007FC8D4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A154DA611645660D007FC8D4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -425,7 +423,6 @@
 		A154DA501645660D007FC8D4 = {
 			isa = PBXGroup;
 			children = (
-				8DAF391B1645687200D87E6C /* Default-568h@2x.png */,
 				A154DA711645660D007FC8D4 /* dungeon_architect */,
 				A154DA5E1645660D007FC8D4 /* Frameworks */,
 				A154DA5C1645660D007FC8D4 /* Products */,
@@ -898,7 +895,6 @@
 				A154DA881645660D007FC8D4 /* Icon@2x.png in Resources */,
 				A154DA8B1645660D007FC8D4 /* iTunesArtwork in Resources */,
 				A154DBC91645660F007FC8D4 /* ChangeLog in Resources */,
-				8DAF391C1645687200D87E6C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
