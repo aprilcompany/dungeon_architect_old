@@ -85,17 +85,21 @@
     
     // Zufallszahl erzeugen
     int randomInt;
-    randomInt = (arc4random() % 2) + 1;
-    CCSprite *target = [CCSprite spriteWithFile:@"barbarian.png"
-                                           rect:CGRectMake(0, 0, 35, 35)];
+    randomInt = (arc4random() % 3) + 1;
     
-    if(randomInt == 1){
-        target = [CCSprite spriteWithFile:@"barbarian.png"
-                                               rect:CGRectMake(0, 0, 35, 35)];
-    }
-    else {
-        target = [CCSprite spriteWithFile:@"priest.png"
-                                               rect:CGRectMake(0, 0, 35, 35)];
+    CCSprite *target = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
+    switch (randomInt) {
+        case 1:
+            target = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
+            break;
+        case 2:
+            target = [CCSprite spriteWithFile:@"priest.png" rect:CGRectMake(0, 0, 35, 35)];
+            break;
+        case 3:
+            target = [CCSprite spriteWithFile:@"sage.gif" rect:CGRectMake(0, 0, 35, 35)];
+            break;
+        default:
+            break;
     }
     
     
@@ -111,7 +115,7 @@
     int minDuration = 1.0;
     int maxDuration = 4.0;
     int rangeDuration = maxDuration - minDuration;
-    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+    int actualDuration = 1; //(arc4random() % rangeDuration) + minDuration;
     
     // Setzen der Endposition der Bewegung der Figure
     //// int maxX = winSize.width;
