@@ -35,11 +35,53 @@
 }
 
 -(void)spriteMoveFinished:(id)sender {
-    CCSprite *sprite = (CCSprite *)sender;
-    [self removeChild:sprite cleanup:YES];
+    CCSprite *target = (CCSprite *)sender;
+    // Löschen einer Figure
+    ////[self removeChild:sprite cleanup:YES];
+    
+    // Setzen der Endposition der Bewegung der Figure
+    // Bewegung ist geradlinig, für Tile-Map von 35x35 Feldgröße
+    //// CGSize winSize = [[CCDirector sharedDirector] winSize];
+    //// int maxX = winSize.width;
+    //// int maxY = winSize.height;
+    float x = target.position.x;
+    float y = target.position.y;
+    
+    int direction = (arc4random() % 4)+1;
+    switch (direction) {
+        case 1:
+            x = x + ((arc4random() % 4)+1)*35;
+            break;
+        case 2:
+            y = y + ((arc4random() % 4)+1)*35;
+            break;
+        case 3:
+            x = x - ((arc4random() % 4)+1)*35;
+            break;
+        case 4:
+            y = y - ((arc4random() % 4)+1)*35;
+            break;
+        default:
+            y = y + ((arc4random() % 4)+1)*35;
+            break;
+    }
+    
+    // Determine speed of the target
+    int minDuration = 1.0;
+    int maxDuration = 4.0;
+    int rangeDuration = maxDuration - minDuration;
+    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+    
+    
+    // Create the actions
+    id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(x, y)];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
+    [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+    
+    
 }
 
--(void)moveBarbarian {
+-(void)addFigure {
     
     // Zufallszahl erzeugen
     int randomInt;
@@ -59,51 +101,46 @@
     
     // Determine where to spawn the target along the Y axis
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    int minY = target.contentSize.height/2;
-    int maxY = winSize.height - target.contentSize.height/2;
-    int rangeY = maxY - minY;
-    int actualY = (arc4random() % rangeY) + minY;
-    
-    float x = arc4random() % 480;
-    float y = arc4random() % 320;
-    
-    int directionX = arc4random() % 2;
-    switch (directionX) {
-        case 1:
-            x = -x;
-            break;
-        default:
-            x = -x;
-            break;
-    }
-    
-    int directionY = arc4random() % 2;
-    switch (directionY) {
-        case 1:
-            y = -y;
-            break;
-        default:
-            y = y;
-            break;
-    }
     
     // Create the target slightly off-screen along the right edge,
-    // size.width/2, size.height/2+50
     // and along a random position along the Y axis as calculated above
     target.position = ccp(winSize.width/2, winSize.height/2+50);
     [self addChild:target];
     
     // Determine speed of the target
     int minDuration = 1.0;
-    int maxDuration = 20.0;
+    int maxDuration = 4.0;
     int rangeDuration = maxDuration - minDuration;
     int actualDuration = (arc4random() % rangeDuration) + minDuration;
     
+    // Setzen der Endposition der Bewegung der Figure
+    //// int maxX = winSize.width;
+    //// int maxY = winSize.height;
+    float x = target.position.x; //(arc4random() % maxX) +1;
+    float y = target.position.y; //(arc4random() % maxY) +1;
+    
+    int direction = (arc4random() % 4)+1;
+    switch (direction) {
+        case 1:
+            x = x + 35;
+            break;
+        case 2:
+            y = y + 35;
+            break;
+        case 3:
+            x = x - 35;
+            break;
+        case 4:
+            y = y - 35;
+            break;
+        default:
+            y = y + 35;
+            break;
+    }
+    
     // Create the actions
-    id actionMove = [CCMoveTo actionWithDuration:actualDuration
-                                        position:ccp(x, y)];
-    id actionMoveDone = [CCCallFuncN actionWithTarget:self
-                                             selector:@selector(spriteMoveFinished:)];
+    id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(x, y)];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
     [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
     
 }
@@ -184,14 +221,14 @@
 		[self addChild:menu];
         
         // Add Schedule to move babarian
-        [self schedule:@selector(gameLogic:) interval:1.0];
+        [self schedule:@selector(gameLogic:) interval:3.0];
 
 	}
 	return self;
 }
 
 -(void)gameLogic:(ccTime)dt {
-    [self moveBarbarian];
+    [self addFigure];
 }
 
 // on "dealloc" you need to release all your retained objects

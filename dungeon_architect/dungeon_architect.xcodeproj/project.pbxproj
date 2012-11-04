@@ -143,7 +143,7 @@
 		8D3F833F1645D7C500A43817 /* openDoor0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = openDoor0.gif; sourceTree = "<group>"; };
 		8D87C67F16457F72001E6A23 /* barbarian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barbarian.png; sourceTree = "<group>"; };
 		8D87C68116458695001E6A23 /* priest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = priest.png; sourceTree = "<group>"; };
-		8DAF391B1645687200D87E6C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8DAF391B1645687200D87E6C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		A154DA5B1645660D007FC8D4 /* dungeon_architect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dungeon_architect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A154DA5F1645660D007FC8D4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A154DA611645660D007FC8D4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -431,7 +431,6 @@
 		A154DA501645660D007FC8D4 = {
 			isa = PBXGroup;
 			children = (
-				8DAF391B1645687200D87E6C /* Default-568h@2x.png */,
 				A154DA711645660D007FC8D4 /* dungeon_architect */,
 				A154DA5E1645660D007FC8D4 /* Frameworks */,
 				A154DA5C1645660D007FC8D4 /* Products */,
@@ -481,6 +480,7 @@
 		A154DA721645660D007FC8D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8DAF391B1645687200D87E6C /* Default-568h@2x.png */,
 				8D3F833F1645D7C500A43817 /* openDoor0.gif */,
 				8D87C68116458695001E6A23 /* priest.png */,
 				8D87C67F16457F72001E6A23 /* barbarian.png */,
