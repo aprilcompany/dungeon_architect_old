@@ -185,12 +185,15 @@
         // Determine where to spawn the target along the Y axis
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         
-        // Create the target slightly off-screen along the right edge,
-        // and along a random position along the Y axis as calculated above
+        // Erstellen einer Instanz der Klasse Barbarian
 		Barbarian * barbarian = [Barbarian nodeWithTheGame:self location:ccp(50, 50)];
-        //[barbarians addObject:barbarian];
         barbarian.position = ccp(50,50);
-        //[self addChild: barbarian];
+        
+        // Create the actions
+        id actionMove = [CCMoveTo actionWithDuration:1 position:ccp(300, 300)];
+        id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
+        [barbarian runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+        
         
 		//
 		// Leaderboards and Achievements
