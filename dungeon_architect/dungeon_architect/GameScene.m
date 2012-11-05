@@ -21,12 +21,11 @@
 
 
 //http://stackoverflow.com/questions/538996/constants-in-objective-c
-// Constants.m
+// Constants
 NSString *const TILEMAP = @"tilemap.tmx";
-
 NSString *const PLAYER = @"sage.gif";
 
-
+int tilegid = 0;
 
 +(id) scene
 {
@@ -103,14 +102,7 @@ NSString *const PLAYER = @"sage.gif";
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CCLOG(@"ccTouchBegan");
-    
-    CGPoint touchLocation = [touch locationInView: [touch view]];
-    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-    touchLocation = [self convertToNodeSpace:touchLocation];
-    
-    
-    [self setPlayerPosition:touchLocation];
-    
+       
 	return YES;
 }
 
@@ -120,61 +112,35 @@ NSString *const PLAYER = @"sage.gif";
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    
     CCLOG(@"ccTouchEnded");
     
-    CGPoint touchLocation = [touch locationInView: [touch view]];
-    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-    touchLocation = [self convertToNodeSpace:touchLocation];
+    CGPoint touchLocation = [self getNodeSpaceLocation:touch];
     
-    
-    //!!!!code kann man nutzen um tile
-    //    CGPoint playerPos = _player.position;
-//    CGPoint diff = ccpSub(touchLocation, playerPos);
-//    if (abs(diff.x) > abs(diff.y)) {
-//        if (diff.x > 0) {
-//            playerPos.x += _tileMap.tileSize.width;
-//        } else {
-//            playerPos.x -= _tileMap.tileSize.width;
-//        }
-//    } else {
-//        if (diff.y > 0) {
-//            playerPos.y += _tileMap.tileSize.height;
-//        } else {
-//            playerPos.y -= _tileMap.tileSize.height;
-//        }
-//    }
-    //player.position = playerPos; // Todo: Trymove
-//    
-//    if (playerPos.x <= (_tileMap.mapSize.width * _tileMap.tileSize.width) &&
-//        playerPos.y <= (_tileMap.mapSize.height * _tileMap.tileSize.height) &&
-//        playerPos.y >= 0 &&
-//        playerPos.x >= 0 ) {
-//        [self setPlayerPosition:playerPos];
-//    }
-//    
-//    [self setViewpointCenter:_player.position];
-    
-    [self setPlayerPosition:touchLocation];
-    
+    CGPoint tilePos= [self tileCoordForPosition:touchLocation];    
     
     CCTMXLayer* backgroundLayer = [self.tileMap layerNamed:@"background"];
     
     
-    unsigned int gid1 = [backgroundLayer tileGIDAt:ccp(1,50)];
-    
-    unsigned int gid = [backgroundLayer tileGIDAt:ccp(10,50)];
-    
-    
-    CCTMXLayer* layer = [self.tileMap layerNamed:@"Kachelebene 2"];
-    
-    //todo positiin touch auf kachel positionen mappen
-    [backgroundLayer setTileGID: 4 at: ccp(10, 50)];
-    
-    
+    CCLOG(@"%i", tilegid);
+    [backgroundLayer setTileGID: 34 at: tilePos];
+    tilegid++;
     
 }
 
+//berchnet die NodeSpace Position von einem UITouc Event. Der NodeSpace ist sozusagen die Ansicht, in die Cocos2d zeichnet. Diese Ansicht hat ein eigenes Koordinatensystem
+-(CGPoint) getNodeSpaceLocation:(UITouch *)touch{
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    return touchLocation;
+}
+
+// berechnet für die x,y Koordinaten 'position' die Tilenummer. Die Tiles sind mit (x,y) startend mit (0,0), (1,0), (2,0) von oben links im Bild startend durchnummeriert. Die Koordinaten x,y müssen vorher in den 'Nodespace' (das sind die Koordinaten der Cocos2d Ansicht) umberechent werden. 
+- (CGPoint)tileCoordForPosition:(CGPoint)position {
+    int x = position.x / _tileMap.tileSize.width;
+    int y = ((_tileMap.mapSize.height * _tileMap.tileSize.height) - position.y) / _tileMap.tileSize.height;
+    return ccp(x, y);
+}
 
 //TODO: man darf nicht ausserhalb der map zoomen, code von ccTouchedEnd nehmen, um das zu verhindern
 //Methode ermöglicht das navigiere auf der karte indem man ein touch macht und die karte hin  und her zieht
@@ -189,11 +155,9 @@ NSString *const PLAYER = @"sage.gif";
     touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
     prevLocation = [[CCDirector sharedDirector] convertToGL: prevLocation];
     
-    CGPoint diff = ccpSub(touchLocation,prevLocation);
-    
+    CGPoint diff = ccpSub(touchLocation,prevLocation);    
     
     [self setPosition: ccpAdd([self position], diff)];
-    [self setPlayerPosition:touchLocation];
 
 }
 
