@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D971FED164827170080BBD6 /* Barbarian.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D971FEC164827170080BBD6 /* Barbarian.m */; };
 		A154DA601645660D007FC8D4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA5F1645660D007FC8D4 /* QuartzCore.framework */; };
 		A154DA621645660D007FC8D4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA611645660D007FC8D4 /* OpenGLES.framework */; };
 		A154DA641645660D007FC8D4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA631645660D007FC8D4 /* OpenAL.framework */; };
@@ -146,6 +147,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D971FEB164827170080BBD6 /* Barbarian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barbarian.h; sourceTree = "<group>"; };
+		8D971FEC164827170080BBD6 /* Barbarian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barbarian.m; sourceTree = "<group>"; };
 		A154DA5B1645660D007FC8D4 /* dungeon_architect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dungeon_architect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A154DA5F1645660D007FC8D4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A154DA611645660D007FC8D4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -441,6 +444,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D971FE9164826F10080BBD6 /* Figures */ = {
+			isa = PBXGroup;
+			children = (
+				8D971FEB164827170080BBD6 /* Barbarian.h */,
+				8D971FEC164827170080BBD6 /* Barbarian.m */,
+			);
+			name = Figures;
+			sourceTree = "<group>";
+		};
 		A154DA501645660D007FC8D4 = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +489,7 @@
 		A154DA711645660D007FC8D4 /* dungeon_architect */ = {
 			isa = PBXGroup;
 			children = (
+				8D971FE9164826F10080BBD6 /* Figures */,
 				A154DBE91645660F007FC8D4 /* AppDelegate.h */,
 				A154DBEA1645660F007FC8D4 /* AppDelegate.m */,
 				A154DBEC1645660F007FC8D4 /* HelloWorldLayer.h */,
@@ -1051,6 +1064,7 @@
 				A154DBEE1645660F007FC8D4 /* HelloWorldLayer.m in Sources */,
 				A154DBF11645660F007FC8D4 /* IntroLayer.m in Sources */,
 				A1A204641646AA8D007C5EE8 /* GameScene.m in Sources */,
+				8D971FED164827170080BBD6 /* Barbarian.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

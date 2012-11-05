@@ -16,6 +16,9 @@
 //http://www.reigndesign.com/blog/creating-a-simple-menu-with-scene-transition-in-cocos2d/
 #import "GameScene.h"
 
+// Barbarian-Klasse implementieren
+#import "Barbarian.h"
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -50,6 +53,7 @@
     float x = target.position.x;
     float y = target.position.y;
     
+    // Eine von 4 Bewegungsrichtungen für Tiles ermitteln
     int direction = (arc4random() % 4)+1;
     switch (direction) {
         case 1:
@@ -80,8 +84,6 @@
     id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(x, y)];
     id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
     [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
-    
-    
 }
 
 -(void)addFigure {
@@ -179,9 +181,17 @@
 		// add the label as a child to this Layer
 		[self addChild: label];
         [self addChild: vlabel];
-		
-		
-		
+        
+        // Determine where to spawn the target along the Y axis
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        
+        // Create the target slightly off-screen along the right edge,
+        // and along a random position along the Y axis as calculated above
+		Barbarian * barbarian = [Barbarian nodeWithTheGame:self location:ccp(50, 50)];
+        //[barbarians addObject:barbarian];
+        barbarian.position = ccp(50,50);
+        //[self addChild: barbarian];
+        
 		//
 		// Leaderboards and Achievements
 		//
@@ -261,6 +271,7 @@
     // in case you have something to dealloc, do it in this method
     // in this particular example nothing needs to be released.
     // cocos2d will automatically release all the children (Label)
+    [Barbarian release];
     
     // don't forget to call "super dealloc"
     [super dealloc];
