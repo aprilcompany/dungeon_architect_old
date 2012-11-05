@@ -21,12 +21,11 @@
 
 
 //http://stackoverflow.com/questions/538996/constants-in-objective-c
-// Constants.m
+// Constants
 NSString *const TILEMAP = @"tilemap.tmx";
-
 NSString *const PLAYER = @"sage.gif";
 
-
+int tilegid = 0;
 
 +(id) scene
 {
@@ -103,14 +102,7 @@ NSString *const PLAYER = @"sage.gif";
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CCLOG(@"ccTouchBegan");
-    
-    CGPoint touchLocation = [touch locationInView: [touch view]];
-    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-    touchLocation = [self convertToNodeSpace:touchLocation];
-    
-    
-    [self setPlayerPosition:touchLocation];
-    
+       
 	return YES;
 }
 
@@ -120,31 +112,18 @@ NSString *const PLAYER = @"sage.gif";
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    
     CCLOG(@"ccTouchEnded");
     
-//    CGPoint touchLocation = [touch locationInView: [touch view]];
-//    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-//    touchLocation = [self convertToNodeSpace:touchLocation];
-
     CGPoint touchLocation = [self getNodeSpaceLocation:touch];
     
-//    [self setPlayerPosition:touchLocation];
-    
-    
-    CGPoint tilePos= [self tileCoordForPosition:touchLocation];
+    CGPoint tilePos= [self tileCoordForPosition:touchLocation];    
     
     CCTMXLayer* backgroundLayer = [self.tileMap layerNamed:@"background"];
-    unsigned int gid1 = [backgroundLayer tileGIDAt:ccp(1,50)];
-    unsigned int gid = [backgroundLayer tileGIDAt:ccp(10,50)];
     
     
-//    CCTMXLayer* layer = [self.tileMap layerNamed:@"Kachelebene 2"];
-    
-    //todo position touch auf kachel positionen mappen
-    [backgroundLayer setTileGID: 4 at: tilePos];
-    
-    
+    CCLOG(@"%i", tilegid);
+    [backgroundLayer setTileGID: 34 at: tilePos];
+    tilegid++;
     
 }
 
@@ -176,11 +155,9 @@ NSString *const PLAYER = @"sage.gif";
     touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
     prevLocation = [[CCDirector sharedDirector] convertToGL: prevLocation];
     
-    CGPoint diff = ccpSub(touchLocation,prevLocation);
-    
+    CGPoint diff = ccpSub(touchLocation,prevLocation);    
     
     [self setPosition: ccpAdd([self position], diff)];
-    [self setPlayerPosition:touchLocation];
 
 }
 
