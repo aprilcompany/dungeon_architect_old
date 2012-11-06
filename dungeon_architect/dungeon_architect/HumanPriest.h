@@ -1,17 +1,16 @@
 //
-//  Barbarian.h
+//  HumanPriest.h
 //  dungeon_architect
 //
-//  Created by Andre May on 11/5/12.
+//  Created by Andre May on 11/6/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
 #import "HelloWorldLayer.h"
 
-@interface Barbarian : CCNode {
+@interface HumanPriest : CCNode {
     // Variablen bezüglich der Bewegung
     int movementspeed;
     int movementrange;
@@ -21,12 +20,8 @@
     int armor;
     int damage;
     
-    int barbarname;
-    
     CCSprite * mySprite;
     HelloWorldLayer * theGame;
-    
-    CCLabelTTF *label;
 }
 
 

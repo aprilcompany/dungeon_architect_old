@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D971FED164827170080BBD6 /* Barbarian.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D971FEC164827170080BBD6 /* Barbarian.m */; };
+		8DBCC7FC16490AC300AA14BA /* HumanPriest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCC7FB16490AC300AA14BA /* HumanPriest.m */; };
 		A154DA601645660D007FC8D4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA5F1645660D007FC8D4 /* QuartzCore.framework */; };
 		A154DA621645660D007FC8D4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA611645660D007FC8D4 /* OpenGLES.framework */; };
 		A154DA641645660D007FC8D4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154DA631645660D007FC8D4 /* OpenAL.framework */; };
@@ -149,6 +150,8 @@
 /* Begin PBXFileReference section */
 		8D971FEB164827170080BBD6 /* Barbarian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barbarian.h; sourceTree = "<group>"; };
 		8D971FEC164827170080BBD6 /* Barbarian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barbarian.m; sourceTree = "<group>"; };
+		8DBCC7FA16490AC300AA14BA /* HumanPriest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanPriest.h; sourceTree = "<group>"; };
+		8DBCC7FB16490AC300AA14BA /* HumanPriest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumanPriest.m; sourceTree = "<group>"; };
 		A154DA5B1645660D007FC8D4 /* dungeon_architect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dungeon_architect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A154DA5F1645660D007FC8D4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A154DA611645660D007FC8D4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -449,6 +452,8 @@
 			children = (
 				8D971FEB164827170080BBD6 /* Barbarian.h */,
 				8D971FEC164827170080BBD6 /* Barbarian.m */,
+				8DBCC7FA16490AC300AA14BA /* HumanPriest.h */,
+				8DBCC7FB16490AC300AA14BA /* HumanPriest.m */,
 			);
 			name = Figures;
 			sourceTree = "<group>";
@@ -1065,6 +1070,7 @@
 				A154DBF11645660F007FC8D4 /* IntroLayer.m in Sources */,
 				A1A204641646AA8D007C5EE8 /* GameScene.m in Sources */,
 				8D971FED164827170080BBD6 /* Barbarian.m in Sources */,
+				8DBCC7FC16490AC300AA14BA /* HumanPriest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

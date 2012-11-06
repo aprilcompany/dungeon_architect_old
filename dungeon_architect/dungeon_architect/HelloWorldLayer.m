@@ -18,6 +18,7 @@
 
 // Barbarian-Klasse implementieren
 #import "Barbarian.h"
+#import "HumanPriest.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -40,118 +41,73 @@
 	return scene;
 }
 
--(void)spriteMoveFinished:(id)sender {
-    CCSprite *target = (CCSprite *)sender;
-    // Löschen einer Figure
-    ////[self removeChild:sprite cleanup:YES];
-    
-    // Setzen der Endposition der Bewegung der Figure
-    // Bewegung ist geradlinig, für Tile-Map von 35x35 Feldgröße
-    //// CGSize winSize = [[CCDirector sharedDirector] winSize];
-    //// int maxX = winSize.width;
-    //// int maxY = winSize.height;
-    float x = target.position.x;
-    float y = target.position.y;
-    
-    // Eine von 4 Bewegungsrichtungen für Tiles ermitteln
-    int direction = (arc4random() % 4)+1;
-    switch (direction) {
-        case 1:
-            x = x + ((arc4random() % 4)+1)*35;
-            break;
-        case 2:
-            y = y + ((arc4random() % 4)+1)*35;
-            break;
-        case 3:
-            x = x - ((arc4random() % 4)+1)*35;
-            break;
-        case 4:
-            y = y - ((arc4random() % 4)+1)*35;
-            break;
-        default:
-            y = y + ((arc4random() % 4)+1)*35;
-            break;
-    }
-    
-    // Determine speed of the target
-    int minDuration = 1.0;
-    int maxDuration = 4.0;
-    int rangeDuration = maxDuration - minDuration;
-    int actualDuration = (arc4random() % rangeDuration) + minDuration;
-    
-    
-    // Create the actions
-    id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(x, y)];
-    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
-    [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
-}
+//-(void)spriteMoveFinished:(id)sender {
+//    CCSprite *target = (CCSprite *)sender;
+//    // Löschen einer Figure
+//    ////[self removeChild:sprite cleanup:YES];
+//    
+//    // Setzen der Endposition der Bewegung der Figure
+//    // Bewegung ist geradlinig, für Tile-Map von 35x35 Feldgröße
+//    //// CGSize winSize = [[CCDirector sharedDirector] winSize];
+//    //// int maxX = winSize.width;
+//    //// int maxY = winSize.height;
+//    float x = target.position.x;
+//    float y = target.position.y;
+//    
+//    // Eine von 4 Bewegungsrichtungen für Tiles ermitteln
+//    int direction = (arc4random() % 4)+1;
+//    switch (direction) {
+//        case 1:
+//            x = x + ((arc4random() % 4)+1)*35;
+//            break;
+//        case 2:
+//            y = y + ((arc4random() % 4)+1)*35;
+//            break;
+//        case 3:
+//            x = x - ((arc4random() % 4)+1)*35;
+//            break;
+//        case 4:
+//            y = y - ((arc4random() % 4)+1)*35;
+//            break;
+//        default:
+//            y = y + ((arc4random() % 4)+1)*35;
+//            break;
+//    }
+//    
+//    // Determine speed of the target
+//    int minDuration = 1.0;
+//    int maxDuration = 4.0;
+//    int rangeDuration = maxDuration - minDuration;
+//    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+//    
+//    
+//    // Create the actions
+//    id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(x, y)];
+//    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
+//    [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+//}
 
 -(void)addFigure {
-    
     // Zufallszahl erzeugen
     int randomInt;
-    randomInt = (arc4random() % 3) + 1;
+    randomInt = (arc4random() % 2);
     
-    CCSprite *target = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
+    // Bildgröße ermittlen
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    // Zufällig Figur erstellen
     switch (randomInt) {
+        case 0:
+            [Barbarian nodeWithTheGame:self location:ccp(size.width/2, size.height/2+50)];
+            break;
         case 1:
-            target = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
-            break;
-        case 2:
-            target = [CCSprite spriteWithFile:@"priest.png" rect:CGRectMake(0, 0, 35, 35)];
-            break;
-        case 3:
-            target = [CCSprite spriteWithFile:@"sage.gif" rect:CGRectMake(0, 0, 35, 35)];
+            [HumanPriest nodeWithTheGame:self location:ccp(size.width/2, size.height/2+50)];
             break;
         default:
+             [HumanPriest nodeWithTheGame:self location:ccp(size.width/2, size.height/2+50)];
             break;
     }
-    
-    
-    // Determine where to spawn the target along the Y axis
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
-    // Create the target slightly off-screen along the right edge,
-    // and along a random position along the Y axis as calculated above
-    target.position = ccp(winSize.width/2, winSize.height/2+50);
-    [self addChild:target];
-    
-    // Determine speed of the target
-    int minDuration = 1.0;
-    int maxDuration = 4.0;
-    int rangeDuration = maxDuration - minDuration;
-    int actualDuration = 1; //(arc4random() % rangeDuration) + minDuration;
-    
-    // Setzen der Endposition der Bewegung der Figure
-    //// int maxX = winSize.width;
-    //// int maxY = winSize.height;
-    float x = target.position.x; //(arc4random() % maxX) +1;
-    float y = target.position.y; //(arc4random() % maxY) +1;
-    
-    int direction = (arc4random() % 4)+1;
-    switch (direction) {
-        case 1:
-            x = x + 35;
-            break;
-        case 2:
-            y = y + 35;
-            break;
-        case 3:
-            x = x - 35;
-            break;
-        case 4:
-            y = y - 35;
-            break;
-        default:
-            y = y + 35;
-            break;
-    }
-    
-    // Create the actions
-    id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(x, y)];
-    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
-    [target runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
-    
+
 }
 
 // on "init" you need to initialize your instance
@@ -161,39 +117,35 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
 		
+        // ask director for the window size
+		CGSize size = [[CCDirector sharedDirector] winSize];
+        
 		// create and initialize a Label
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Dungeon Architect Alpha" fontName:@"Marker Felt" fontSize:64];
-        
 		CCLabelTTF *vlabel = [CCLabelTTF labelWithString:@"a Andi and Chris Production" fontName:@"Marker Felt" fontSize:32];
-        
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-        CCSprite *player = [CCSprite spriteWithFile:@"openDoor0.gif" rect:CGRectMake(0, 0, 35, 35)];
         
 		// position the label on the center of the screen
 		label.position =  ccp( size.width /2 , size.height/2 );
 		vlabel.position =  ccp( size.width /2 , size.height/3 );
         
-        // position player on the screen
-        player.position = ccp(size.width/2, size.height/2+50);
-        [self addChild: player];
-        
-		// add the label as a child to this Layer
+        // add the label as a child to this Layer
 		[self addChild: label];
         [self addChild: vlabel];
         
-        // Determine where to spawn the target along the Y axis
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        // create Player
+        CCSprite *player = [CCSprite spriteWithFile:@"openDoor0.gif" rect:CGRectMake(0, 0, 35, 35)];
+        
+        // position player on the screen
+        player.position = ccp(size.width/2, size.height/2+50);
+        
+        // add player as a child to this layer
+        [self addChild: player];
+        
+		
         
         // Erstellen einer Instanz der Klasse Barbarian
-		Barbarian * barbarian = [Barbarian nodeWithTheGame:self location:ccp(50, 50)];
-        barbarian.position = ccp(50,50);
-        
-        // Create the actions
-        id actionMove = [CCMoveTo actionWithDuration:1 position:ccp(300, 300)];
-        id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
-        [barbarian runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
-        
+        [Barbarian nodeWithTheGame:self location:ccp(size.width/2, size.height/2+50)];
+        [HumanPriest nodeWithTheGame:self location:ccp(size.width/2, size.height/2+50)];
         
 		//
 		// Leaderboards and Achievements
@@ -249,7 +201,7 @@
         // Add the menu to the layer
         [self addChild:menu];
         
-        // Add Schedule to move babarian
+        // Add Schedule to add babarian
         [self schedule:@selector(gameLogic:) interval:3.0];
         
     }

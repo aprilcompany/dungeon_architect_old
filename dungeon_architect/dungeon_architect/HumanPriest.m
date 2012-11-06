@@ -1,19 +1,17 @@
 //
-//  Barbarian.m
+//  HumanPriest.m
 //  dungeon_architect
 //
-//  Created by Andre May on 11/5/12.
+//  Created by Andre May on 11/6/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Barbarian.h"
+#import "HumanPriest.h"
 
 
-@implementation Barbarian
+@implementation HumanPriest
 
 @synthesize mySprite,theGame;
-
-static int name;
 
 +(id) nodeWithTheGame:(HelloWorldLayer*)_game location:(CGPoint)location
 {
@@ -26,20 +24,18 @@ static int name;
         
         // Setzen der Init-Variablen
         theGame = _game;
-        movementrange = 4;
+        movementrange = 10;
         
         int randomInt;
         randomInt = (arc4random() % 10) + 1;
-        movementspeed = 50;
+        movementspeed = 200;
         
         constitution = 1;
         armor = 1;
         damage = 1;
-        barbarname = name;
-        name++;
         
         // Setzen des Sprites
-        mySprite = [CCSprite spriteWithFile:@"barbarian.png" rect:CGRectMake(0, 0, 35, 35)];
+        mySprite = [CCSprite spriteWithFile:@"priest.png" rect:CGRectMake(0, 0, 35, 35)];
         int x = location.x;
         int y = location.y;
         mySprite.position = ccp(x,y);
@@ -50,50 +46,52 @@ static int name;
         [theGame addChild:self];
         
         // Methode zum Bewegen aufrufen
-        [self barbarianStartRandomMoving];
+        [self humanpriestStartRandomMoving];
         
-        ////CCLabelTTF *label = [[CCLabelTTF alloc] initWithString:[[NSNumber numberWithInt:barbarname] stringValue] dimensions:CGSizeMake([mySprite contentSize].width, [mySprite contentSize].height) alignment:UITextAlignmentCenter fontName:@"verdana" fontSize:20.0f];
-
-        NSString *namedesbarbar = [[NSNumber numberWithInt:barbarname] stringValue];
-        
-        label = [[CCLabelTTF alloc] initWithString:namedesbarbar dimensions:CGSizeMake([mySprite contentSize].width, [mySprite contentSize].height) alignment:UITextAlignmentLeft fontName:@"verdana" fontSize:10.0f];
-        
-        [mySprite addChild:label z: 10];
     }
     return self;
 }
 
--(void)barbarianStartRandomMoving
+-(void)humanpriestStartRandomMoving
 {
-    [self barbarianMoveFinished:self];
+    [self humanpriestMoveFinished:self];
 }
 
--(void)barbarianMoveFinished:(id)sender
+-(void)humanpriestMoveFinished:(id)sender
 {
     CCSprite *target = (CCSprite *)sender;
+    // Löschen einer Figure
+    ////[self removeChild:sprite cleanup:YES];
     
     // Setzen der Endposition der Bewegung der Figure
     // Bewegung ist geradlinig, für Tile-Map von 35x35 Feldgröße
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    int maxX = winSize.width;
-    int maxY = winSize.height;
+    //// CGSize winSize = [[CCDirector sharedDirector] winSize];
+    //// int maxX = winSize.width;
+    //// int maxY = winSize.height;
+    //int x = self.position.x;
+    //int y = self.position.y;
+    //CGPoint test = [target position];
     
     float x = target.position.x;
     float y = target.position.y;
     
     // Eine von 4 Bewegungsrichtungen für Tiles ermitteln
-    int direction = (arc4random() % 4)+1;
+    int direction = (arc4random() % 2)+1;
     switch (direction) {
         case 1:
             x = x + ((arc4random() % 4)+1)*35;
             break;
         case 2:
-            y = y + ((arc4random() % 4)+1)*35;
-            break;
-        case 3:
             x = x - ((arc4random() % 4)+1)*35;
             break;
-        case 4:
+    }
+    
+    direction = (arc4random() % 2)+1;
+    switch (direction) {
+        case 1:
+            y = y + ((arc4random() % 4)+1)*35;
+            break;
+        case 2:
             y = y - ((arc4random() % 4)+1)*35;
             break;
         default:
@@ -108,22 +106,22 @@ static int name;
     ////int actualDuration = (arc4random() % rangeDuration) + minDuration;
     
     // Nächste Bewegung setzen
-    [self barbarianMoveTo:x :y];
+    [self humanpriestMoveTo:x :y];
 }
 
--(void)barbarianMoveTo:(int)x:(int)y
+-(void)humanpriestMoveTo:(int)x:(int)y
 {
     float speed = [self getTimeToTravelPoint:ccp(x, y) fromPoint:self.position speed:movementspeed];
     
     id actionMove = [CCMoveTo actionWithDuration:speed position:ccp(x, y)];
-    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(barbarianMoveFinished:)];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(humanpriestMoveFinished:)];
     [self runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+    
+    
 }
 
 -(void)update:(ccTime)dt
 {
-    //[label setPosition:spriteObj.position];
-    //label.string = @"Test";
     
 }
 
@@ -139,3 +137,4 @@ static int name;
 
 
 @end
+
