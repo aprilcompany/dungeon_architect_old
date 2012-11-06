@@ -59,6 +59,7 @@ static int name;
         label = [[CCLabelTTF alloc] initWithString:namedesbarbar dimensions:CGSizeMake([mySprite contentSize].width, [mySprite contentSize].height) alignment:UITextAlignmentLeft fontName:@"verdana" fontSize:10.0f];
         
         [mySprite addChild:label z: 10];
+        [self schedule:@selector(update:) interval:0.1];
     }
     return self;
 }
@@ -123,7 +124,9 @@ static int name;
 -(void)update:(ccTime)dt
 {
     //[label setPosition:spriteObj.position];
-    //label.string = @"Test";
+    NSString *andre = [[NSNumber numberWithFloat:self.position.x] stringValue];
+    
+    label.string = andre;
     
 }
 
